@@ -1,465 +1,767 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 //import Card from '../components/Card.astro';
 ---
 
 <Layout title="Nexa - Where financial innovation meets your future">
-	<div class="page-wrapper">
-		<div class="global-styles w-embed">
-		  <style>
-	/* Set color style to inherit */
-	.inherit-color * {
+  <div class="page-wrapper">
+    <div class="global-styles w-embed">
+      <style>
+        /* Set color style to inherit */
+        .inherit-color * {
+          color: inherit;
+        }
+        /* Focus state style for keyboard navigation for the focusable elements */
+        *[tabindex]:focus-visible,
+        input[type="file"]:focus-visible {
+          outline: 0.125rem solid #4d65ff;
+          outline-offset: 0.125rem;
+        }
+        /* Get rid of top margin on first element in any rich text element */
+        .w-richtext > :not(div):first-child,
+        .w-richtext > div:first-child > :first-child {
+          margin-top: 0 !important;
+        }
+        /* Get rid of bottom margin on last element in any rich text element */
+        .w-richtext > :last-child,
+        .w-richtext ol li:last-child,
+        .w-richtext ul li:last-child {
+          margin-bottom: 0 !important;
+        }
+        /* Prevent all click and hover interaction with an element */
+        .pointer-events-off {
+          pointer-events: none;
+        }
+        /* Enables all click and hover interaction with an element */
+        .pointer-events-on {
+          pointer-events: auto;
+        }
+        /* Create a class of .div-square which maintains a 1:1 dimension of a div */
+        .div-square::after {
+          content: "";
+          display: block;
+          padding-bottom: 100%;
+        }
+        /* Make sure containers never lose their center alignment */
+        .container-medium,
+        .container-small,
+        .container-large {
+          margin-right: auto !important;
+          margin-left: auto !important;
+        }
+        /* 
+		Make the following elements inherit typography styles from the parent and not have hardcoded values. 
+		Important: You will not be able to style for example "All Links" in Designer with this CSS applied.
+		Uncomment this CSS to use it in the project. Leave this message for future hand-off.
+		*/
+        /*
+		a,
+		.w-input,
+		.w-select,
+		.w-tab-link,
+		.w-nav-link,
+		.w-dropdown-btn,
+		.w-dropdown-toggle,
+		.w-dropdown-link {
 		color: inherit;
-	}
-	/* Focus state style for keyboard navigation for the focusable elements */
-	*[tabindex]:focus-visible,
-	  input[type="file"]:focus-visible {
-	   outline: 0.125rem solid #4d65ff;
-	   outline-offset: 0.125rem;
-	}
-	/* Get rid of top margin on first element in any rich text element */
-	.w-richtext > :not(div):first-child, .w-richtext > div:first-child > :first-child {
-	  margin-top: 0 !important;
-	}
-	/* Get rid of bottom margin on last element in any rich text element */
-	.w-richtext>:last-child, .w-richtext ol li:last-child, .w-richtext ul li:last-child {
-		margin-bottom: 0 !important;
-	}
-	/* Prevent all click and hover interaction with an element */
-	.pointer-events-off {
-		pointer-events: none;
-	}
-	/* Enables all click and hover interaction with an element */
-	.pointer-events-on {
-	  pointer-events: auto;
-	}
-	/* Create a class of .div-square which maintains a 1:1 dimension of a div */
-	.div-square::after {
-		content: "";
-		display: block;
-		padding-bottom: 100%;
-	}
-	/* Make sure containers never lose their center alignment */
-	.container-medium,.container-small, .container-large {
-		margin-right: auto !important;
-	  margin-left: auto !important;
-	}
-	/* 
-	Make the following elements inherit typography styles from the parent and not have hardcoded values. 
-	Important: You will not be able to style for example "All Links" in Designer with this CSS applied.
-	Uncomment this CSS to use it in the project. Leave this message for future hand-off.
+		text-decoration: inherit;
+		font-size: inherit;
+		}
 	*/
-	/*
-	a,
-	.w-input,
-	.w-select,
-	.w-tab-link,
-	.w-nav-link,
-	.w-dropdown-btn,
-	.w-dropdown-toggle,
-	.w-dropdown-link {
-	  color: inherit;
-	  text-decoration: inherit;
-	  font-size: inherit;
-	}
-	*/
-	/* Apply "..." after 3 lines of text */
-	.text-style-3lines {
-		display: -webkit-box;
-		overflow: hidden;
-		-webkit-line-clamp: 3;
-		-webkit-box-orient: vertical;
-	}
-	/* Apply "..." after 2 lines of text */
-	.text-style-2lines {
-		display: -webkit-box;
-		overflow: hidden;
-		-webkit-line-clamp: 2;
-		-webkit-box-orient: vertical;
-	}
-	/* Adds inline flex display */
-	.display-inlineflex {
-	  display: inline-flex;
-	}
-	/* These classes are never overwritten */
-	.hide {
-	  display: none !important;
-	}
-	@media screen and (max-width: 991px) {
-		.hide, .hide-tablet {
-			display: none !important;
-		}
-	}
-	  @media screen and (max-width: 767px) {
-		.hide-mobile-landscape{
-		  display: none !important;
-		}
-	}
-	  @media screen and (max-width: 479px) {
-		.hide-mobile{
-		  display: none !important;
-		}
-	}
-	.margin-0 {
-	  margin: 0rem !important;
-	}
-	.padding-0 {
-	  padding: 0rem !important;
-	}
-	.spacing-clean {
-	padding: 0rem !important;
-	margin: 0rem !important;
-	}
-	.margin-top {
-	  margin-right: 0rem !important;
-	  margin-bottom: 0rem !important;
-	  margin-left: 0rem !important;
-	}
-	.padding-top {
-	  padding-right: 0rem !important;
-	  padding-bottom: 0rem !important;
-	  padding-left: 0rem !important;
-	}
-	.margin-right {
-	  margin-top: 0rem !important;
-	  margin-bottom: 0rem !important;
-	  margin-left: 0rem !important;
-	}
-	.padding-right {
-	  padding-top: 0rem !important;
-	  padding-bottom: 0rem !important;
-	  padding-left: 0rem !important;
-	}
-	.margin-bottom {
-	  margin-top: 0rem !important;
-	  margin-right: 0rem !important;
-	  margin-left: 0rem !important;
-	}
-	.padding-bottom {
-	  padding-top: 0rem !important;
-	  padding-right: 0rem !important;
-	  padding-left: 0rem !important;
-	}
-	.margin-left {
-	  margin-top: 0rem !important;
-	  margin-right: 0rem !important;
-	  margin-bottom: 0rem !important;
-	}
-	.padding-left {
-	  padding-top: 0rem !important;
-	  padding-right: 0rem !important;
-	  padding-bottom: 0rem !important;
-	}
-	.margin-horizontal {
-	  margin-top: 0rem !important;
-	  margin-bottom: 0rem !important;
-	}
-	.padding-horizontal {
-	  padding-top: 0rem !important;
-	  padding-bottom: 0rem !important;
-	}
-	.margin-vertical {
-	  margin-right: 0rem !important;
-	  margin-left: 0rem !important;
-	}
-	.padding-vertical {
-	  padding-right: 0rem !important;
-	  padding-left: 0rem !important;
-	}
-	/* Apply "..." at 100% width */
-	.truncate-width { 
-			width: 100%; 
-		white-space: nowrap; 
-		overflow: hidden; 
-		text-overflow: ellipsis; 
-	}
-	/* Removes native scrollbar */
-	.no-scrollbar {
-		-ms-overflow-style: none;
-		overflow: -moz-scrollbars-none; 
-	}
-	.no-scrollbar::-webkit-scrollbar {
-		display: none;
-	}
-	</style>
-		</div>
-		<div data-animation="default" class="navbar1_component w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav" data-easing="ease" data-collapse="medium" data-w-id="fa16d0d2-92df-7023-ce77-abc99078ba2b" role="banner" data-duration="400">
-		  <div class="navbar1_container">
-			<a href="#" class="navbar1_logo-link w-nav-brand"><img src="images/logo-black.svg" loading="lazy" alt="" class="navbar1_logo"></a>
-			<nav role="navigation" class="navbar1_menu is-page-height-tablet w-nav-menu">
-			  <a href="#features" class="navbar1_link tablet w-nav-link">Features</a>
-			  <a href="#benefits" class="navbar1_link tablet w-nav-link">Benefits</a>
-			  <a href="#testimonials" class="navbar1_link tablet w-nav-link">Testimonials</a>
-			  <div class="navbar1_menu-buttons">
-				<a href="#cta" class="button is-small w-button">Join Our Waitlist</a>
-			  </div>
-			</nav>
-			<div class="navbar1_menu-button w-nav-button">
-			  <div class="menu-icon1">
-				<div class="menu-icon1_line-top"></div>
-				<div class="menu-icon1_line-middle">
-				  <div class="menu-icon_line-middle-inner"></div>
-				</div>
-				<div class="menu-icon1_line-bottom"></div>
-			  </div>
-			</div>
-		  </div>
-		</div>
-		<main class="main-wrapper">
-		  <header class="section_home-header">
-			<div class="padding-global">
-			  <div class="container-large">
-				<div class="padding-section-large">
-				  <div class="header26_component">
-					<div class="margin-bottom margin-xxlarge">
-					  <div class="text-align-center">
-						<div class="max-width-xlarge">
-						  <div class="margin-bottom margin-small">
-							<h1>Where Financial Innovation <br>Meets Your Future</h1>
-						  </div>
-						  <p class="text-size-medium">At Nexa, we&#x27;re redefining the landscape of finance through cutting-edge technology and forward-thinking solutions. Whether you&#x27;re an individual investor, a growing startup, or an established enterprise, we&#x27;re here to empower you on your financial journey.</p>
-						  <div class="margin-top margin-medium">
-							<div class="button-group is-center">
-							  <a href="#cta" class="button w-button">Join Our Waitlist</a>
-							  <a href="#features" class="button is-secondary w-button">Explore Our Features</a>
-							</div>
-						  </div>
-						</div>
-					  </div>
-					</div>
-					<div class="header_image-container">
-					  <div class="header26_image-wrapper"><img src="images/hero-image.png" loading="eager" sizes="(max-width: 991px) 90vw, 864px" srcset="images/hero-image-p-500.png 500w, images/hero-image-p-800.png 800w, images/hero-image-p-1080.png 1080w, images/hero-image-p-1600.png 1600w, images/hero-image.png 1630w" alt="financial graphic - weekly spending, spending channels and income vs spending" class="header26_image"></div>
-					  <div class="gradient-background"></div>
-					  <div class="gradient-background-2"></div>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			</div>
-		  </header>
-		  <section class="section_logo">
-			<div class="padding-global">
-			  <div class="container-large">
-				<div class="padding-section-medium">
-				  <div class="logo1_component"><img src="images/stripe.svg" loading="lazy" alt="Stripe logo" class="logo1_logo"><img src="images/afterpay.svg" loading="lazy" alt="Afterpay company logo" class="logo1_logo"><img src="images/hopin.svg" loading="lazy" alt="Hopin company logo" class="logo1_logo"><img src="images/splunk.svg" loading="lazy" alt="Splunk company logo" class="logo1_logo"><img src="images/attentive.svg" loading="lazy" alt="Attentive company logo" class="logo1_logo"></div>
-				</div>
-			  </div>
-			</div>
-		  </section>
-		  <section id="features" class="section_home-features">
-			<div class="padding-global">
-			  <div class="container-medium">
-				<div class="padding-section-medium">
-				  <div class="text-align-center">
-					<div class="max-width-xlarge align-center">
-					  <div class="margin-bottom margin-small">
-						<h2 class="heading-style-h3">Discover the Next Generation of Financial Solutions at Nexa</h2>
-					  </div>
-					  <p class="text-size-medium">Explore our cutting-edge features designed to personalize your financial journey, integrate seamlessly across platforms, and ensure the highest standards of security. Take control of your finances and unlock new possibilities with Nexa today.</p>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			  <div class="container-large">
-				<div class="padding-section-small">
-				  <div class="w-layout-grid layout192_component">
-					<div id="w-node-_2bf7e7c8-54d2-4da5-0b7b-0eecde73fac6-ab5f4e6f" class="home_features-item">
-					  <div id="w-node-c07bc741-f034-6b34-f87e-6faa46440891-ab5f4e6f" class="layout192_content">
-						<div class="margin-bottom margin-xsmall">
-						  <div class="tagline-wrapper">
-							<div class="text-weight-semibold green-tagline">Customize</div>
-						  </div>
-						</div>
-						<div class="margin-bottom margin-small">
-						  <h3 class="heading-style-h5">Personalized Insights</h3>
-						</div>
-						<p class="text-size-medium">Gain valuable insights into your financial health with real-time data analysis and personalized recommendations. Our platform dynamically tracks your spending habits, investment performance, and savings goals to provide actionable insights that help you stay on track towards financial success.</p>
-					  </div>
-					  <div id="w-node-c07bc741-f034-6b34-f87e-6faa4644088f-ab5f4e6f" class="layout192_image-wrapper first-row"><img src="images/spending-habits.png" loading="lazy" sizes="(max-width: 479px) 87vw, (max-width: 767px) 88vw, (max-width: 991px) 14vw, 20vw" srcset="images/spending-habits-p-500.png 500w, images/spending-habits-p-800.png 800w, images/spending-habits-p-1080.png 1080w, images/spending-habits.png 1148w" alt="Spending habits graphic feature image" class="layout192_image _1"></div>
-					</div>
-					<div id="w-node-_74c0ad5e-1508-f66f-d763-f68c6137e6e3-ab5f4e6f" class="home_features-item">
-					  <div id="w-node-_9b504c82-a7bf-af98-8f5b-ee8a6c526519-ab5f4e6f" class="layout192_image-wrapper second-row"><img src="images/weekly-equities.png" loading="lazy" sizes="(max-width: 479px) 83vw, (max-width: 767px) 86vw, (max-width: 991px) 15vw, 18vw" srcset="images/weekly-equities-p-500.png 500w, images/weekly-equities-p-800.png 800w, images/weekly-equities.png 948w" alt="Weekly equities graphic" class="layout192_image _2"></div>
-					  <div id="w-node-_84f07177-5457-2804-9d46-5b0ae7e69aff-ab5f4e6f" class="layout192_content">
-						<div class="margin-bottom margin-xsmall">
-						  <div class="tagline-wrapper">
-							<div class="text-weight-semibold green-tagline">Advise</div>
-						  </div>
-						</div>
-						<div class="margin-bottom margin-small">
-						  <h3 class="heading-style-h5">Expert Guidance</h3>
-						</div>
-						<p class="text-size-medium">Access expert financial guidance tailored to your unique goals and circumstances. Our team of financial advisors is here to provide personalized recommendations, answer your questions, and offer strategic advice to help you make informed decisions and optimize your financial strategy.</p>
-					  </div>
-					</div>
-					<div id="w-node-d6110e76-898d-3cfd-134d-f1d46e7facf9-ab5f4e6f" class="home_features-item">
-					  <div id="w-node-_24b58323-08c1-88c1-a114-f7a3c82d7b92-ab5f4e6f" class="layout192_content">
-						<div class="margin-bottom margin-xsmall">
-						  <div class="tagline-wrapper">
-							<div class="text-weight-semibold green-tagline">Organize</div>
-						  </div>
-						</div>
-						<div class="margin-bottom margin-small">
-						  <h3 class="heading-style-h5">Comprehensive Tracking</h3>
-						</div>
-						<p class="text-size-medium">Stay organized and informed with comprehensive financial tracking tools. Easily monitor all your accounts, transactions, and investments in one centralized dashboard, empowering you to track your progress, identify trends, and take control of your financial future with confidence.</p>
-					  </div>
-					  <div id="w-node-_10e28d98-7189-afd8-58ad-c473932d5f80-ab5f4e6f" class="layout192_image-wrapper third-row"><img src="images/spending-channels.png" loading="lazy" sizes="(max-width: 767px) 90vw, (max-width: 991px) 12vw, 19vw" srcset="images/spending-channels-p-500.png 500w, images/spending-channels.png 784w" alt="Spending channels graphic
-	" class="layout192_image _3"></div>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			</div>
-		  </section>
-		  <section id="benefits" class="section_home-benefits">
-			<div class="padding-global">
-			  <div class="container-large">
-				<div class="padding-section-large">
-				  <div class="margin-bottom margin-xxlarge">
-					<div class="text-align-center">
-					  <div class="max-width-xlarge align-center">
-						<div class="margin-bottom margin-small">
-						  <h2 class="heading-style-h3">Unlock the Nexa Advantage</h2>
-						</div>
-						<p class="text-size-medium">Discover the exclusive benefits of partnering with Nexa for your financial needs.</p>
-					  </div>
-					</div>
-				  </div>
-				  <div class="w-layout-grid layout396_component">
-					<div id="w-node-ca402f52-037f-2f86-bc0a-2df9c8eea544-ab5f4e6f" class="w-layout-grid layout396_row">
-					  <div id="w-node-ca402f52-037f-2f86-bc0a-2df9c8eea545-ab5f4e6f" class="layout396_card">
-						<div class="layout396_card-content">
-						  <div class="layout396_card-content-top">
-							<div class="margin-bottom margin-xsmall">
-							  <h3 class="heading-style-h4">Effortless Budgeting</h3>
-							</div>
-							<p>Simplify your financial planning with intuitive budgeting tools, helping you stay on top of your spending effortlessly.</p>
-						  </div>
-						  <div class="margin-bottom margin-small"><img src="images/piggy-bank.svg" loading="lazy" alt="piggy bank icon" class="icon-1x1-medium"></div>
-						</div>
-					  </div>
-					  <div id="w-node-ca402f52-037f-2f86-bc0a-2df9c8eea555-ab5f4e6f" class="layout396_card">
-						<div class="layout396_card-content">
-						  <div class="layout396_card-content-top">
-							<div class="margin-bottom margin-xsmall">
-							  <h3 class="heading-style-h4">Investment Insights</h3>
-							</div>
-							<p>Gain valuable market insights and personalized investment recommendations to maximize your returns and minimize risks.</p>
-						  </div>
-						  <div class="margin-bottom margin-small"><img src="images/chart.svg" loading="lazy" alt="chart icon" class="icon-1x1-medium"></div>
-						</div>
-					  </div>
-					  <div id="w-node-ca402f52-037f-2f86-bc0a-2df9c8eea565-ab5f4e6f" class="layout396_card">
-						<div class="layout396_card-content">
-						  <div class="layout396_card-content-top">
-							<div class="margin-bottom margin-xsmall">
-							  <h3 class="heading-style-h4">Real-time Alerts</h3>
-							</div>
-							<p>Stay informed with instant notifications about important financial events, ensuring you never miss a beat.</p>
-						  </div>
-						  <div class="margin-bottom margin-small"><img src="images/bell.svg" loading="lazy" alt="Bell Icon" class="icon-1x1-medium"></div>
-						</div>
-					  </div>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			</div>
-		  </section>
-		  <section id="testimonials" class="section_testimonial">
-			<div class="padding-global">
-			  <div class="container-large">
-				<div class="padding-section-large">
-				  <div class="w-layout-grid testimonial13_component">
-					<div id="w-node-_1088cb54-a050-aaff-cfa4-7aea0b721eda-ab5f4e6f" class="testimonial13_content">
-					  <div class="margin-vertical margin-medium">
-						<blockquote class="block-quote">“Using Nexa has been a game-changer for my financial journey. The personal insights and guidance have helped me make smarter decisions and achieve my goals faster than I ever thought possible. I highly recommend Nexa to anyone looking to take control of their finances and unlock their full potential.”</blockquote>
-					  </div>
-					  <div class="testimonial13_client">
-						<div class="testimonial13_client-info">
-						  <p class="text-weight-semibold testimonial_name-client">- Sarah Ross</p>
-						  <p class="testimonial_sub-paragraph">Satisfied Nexa user</p>
-						</div>
-					  </div>
-					</div>
-					<div class="testimonial13_client-image-wrapper"><img src="images/expenses.png" loading="lazy" sizes="(max-width: 767px) 90vw, (max-width: 991px) 43vw, 42vw" srcset="images/expenses-p-500.png 500w, images/expenses-p-800.png 800w, images/expenses-p-1080.png 1080w, images/expenses.png 1284w" alt="Expenses graphic" class="testimonial13_client-image"></div>
-				  </div>
-				</div>
-			  </div>
-			</div>
-		  </section>
-		  <section id="cta" class="section_cta">
-			<div class="padding-global">
-			  <div class="container-large">
-				<div class="padding-section-large">
-				  <div class="text-align-center">
-					<div class="margin-bottom margin-small">
-					  <h2 class="heading-style-h1">Transform Your Financial <br>Future with Nexa</h2>
-					</div>
-					<p class="text-size-medium">Take the first step towards financial freedom with Nexa&#x27;s innovative tools and personalized <br>guidance. Join us now and unlock the potential to achieve your financial goals like never before.</p>
-				  </div>
-				  <div class="margin-top margin-medium">
-					<div class="max-width-custom align-center">
-					  <div class="cta26_form-block w-form">
-						<form id="email-form" name="email-form" data-name="Email Form" method="get" class="cta26_form" data-wf-page-id="661bb59c7fb20842ab5f4e6f" data-wf-element-id="b123d093-dc49-1720-fad5-6e3816124388">
-						  <div class="signup-form-wrapper"><input class="form_input w-input" maxlength="256" name="email-2" data-name="Email 2" placeholder="email@example.com" type="email" id="email-2" required=""><input type="submit" data-wait="Please wait..." class="button is-small signup-button-desktop w-button" value="Join our waitlist">
-							<div id="w-node-_62437fa3-1d0d-b141-f7ed-32d213ae0b48-ab5f4e6f" class="button-group">
-							  <div class="button is-icon-only">
-								<div class="icon-embed-xsmall w-embed"><svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M11 1.31836L1 11.3184M11 1.31836H2M11 1.31836V10.3184" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-								  </svg></div>
-							  </div>
-							</div>
-						  </div>
-						</form>
-						<div class="success-message w-form-done">
-						  <div class="success-text">Thank you! Your submission has been received!</div>
-						</div>
-						<div class="error-message w-form-fail">
-						  <div class="error-text">Oops! Something went wrong while submitting the form.</div>
-						</div>
-					  </div>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			</div>
-		  </section>
-		</main>
-		<footer class="footer3_component">
-		  <div class="padding-global">
-			<div class="container-large">
-			  <div class="padding-vertical padding-xxlarge">
-				<div class="padding-bottom padding-xxlarge">
-				  <div class="w-layout-grid footer3_top-wrapper">
-					<div class="footer3_left-wrapper">
-					  <div class="margin-bottom margin-medium">
-						<div class="footer3_details-wrapper">
-						  <div class="margin-bottom margin-tiny">
-							<h2><span class="text-color-white">Empowering Your Financial Journey</span></h2>
-						  </div>
-						</div>
-					  </div>
-					</div>
-				  </div>
-				</div>
-				<div class="margin-bottom margin-medium">
-				  <a href="#" class="footer3_logo-link w-nav-brand"><img src="images/logo-white.svg" loading="lazy" alt=""></a>
-				</div>
-				<div class="line-divider"></div>
-				<div class="padding-top padding-medium">
-				  <div class="footer3_bottom-wrapper">
-					<div class="footer3_credit-text">© Nexa by ExpertFlow</div>
-					<div class="w-layout-grid footer3_legal-list">
-					  <a href="#features" class="footer3_legal-link">Features</a>
-					  <a href="#benefits" class="footer3_legal-link">Benefits</a>
-					  <a href="#testimonials" class="footer3_legal-link">Testimonials</a>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			</div>
-		  </div>
-		</footer>
-	  </div>
+        /* Apply "..." after 3 lines of text */
+        .text-style-3lines {
+          display: -webkit-box;
+          overflow: hidden;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+        }
+        /* Apply "..." after 2 lines of text */
+        .text-style-2lines {
+          display: -webkit-box;
+          overflow: hidden;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+        /* Adds inline flex display */
+        .display-inlineflex {
+          display: inline-flex;
+        }
+        /* These classes are never overwritten */
+        .hide {
+          display: none !important;
+        }
+        @media screen and (max-width: 991px) {
+          .hide,
+          .hide-tablet {
+            display: none !important;
+          }
+        }
+        @media screen and (max-width: 767px) {
+          .hide-mobile-landscape {
+            display: none !important;
+          }
+        }
+        @media screen and (max-width: 479px) {
+          .hide-mobile {
+            display: none !important;
+          }
+        }
+        .margin-0 {
+          margin: 0rem !important;
+        }
+        .padding-0 {
+          padding: 0rem !important;
+        }
+        .spacing-clean {
+          padding: 0rem !important;
+          margin: 0rem !important;
+        }
+        .margin-top {
+          margin-right: 0rem !important;
+          margin-bottom: 0rem !important;
+          margin-left: 0rem !important;
+        }
+        .padding-top {
+          padding-right: 0rem !important;
+          padding-bottom: 0rem !important;
+          padding-left: 0rem !important;
+        }
+        .margin-right {
+          margin-top: 0rem !important;
+          margin-bottom: 0rem !important;
+          margin-left: 0rem !important;
+        }
+        .padding-right {
+          padding-top: 0rem !important;
+          padding-bottom: 0rem !important;
+          padding-left: 0rem !important;
+        }
+        .margin-bottom {
+          margin-top: 0rem !important;
+          margin-right: 0rem !important;
+          margin-left: 0rem !important;
+        }
+        .padding-bottom {
+          padding-top: 0rem !important;
+          padding-right: 0rem !important;
+          padding-left: 0rem !important;
+        }
+        .margin-left {
+          margin-top: 0rem !important;
+          margin-right: 0rem !important;
+          margin-bottom: 0rem !important;
+        }
+        .padding-left {
+          padding-top: 0rem !important;
+          padding-right: 0rem !important;
+          padding-bottom: 0rem !important;
+        }
+        .margin-horizontal {
+          margin-top: 0rem !important;
+          margin-bottom: 0rem !important;
+        }
+        .padding-horizontal {
+          padding-top: 0rem !important;
+          padding-bottom: 0rem !important;
+        }
+        .margin-vertical {
+          margin-right: 0rem !important;
+          margin-left: 0rem !important;
+        }
+        .padding-vertical {
+          padding-right: 0rem !important;
+          padding-left: 0rem !important;
+        }
+        /* Apply "..." at 100% width */
+        .truncate-width {
+          width: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        /* Removes native scrollbar */
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          overflow: -moz-scrollbars-none;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      </style>
+    </div>
+    <div
+      data-animation="default"
+      class="navbar1_component w-nav"
+      data-easing2="ease"
+      fs-scrolldisable-element="smart-nav"
+      data-easing="ease"
+      data-collapse="medium"
+      data-w-id="fa16d0d2-92df-7023-ce77-abc99078ba2b"
+      role="banner"
+      data-duration="400"
+    >
+      <div class="navbar1_container">
+        <a href="#" class="navbar1_logo-link w-nav-brand"
+          ><img
+            src="images/logo-black.svg"
+            loading="lazy"
+            alt=""
+            class="navbar1_logo"
+          /></a
+        >
+        <nav
+          role="navigation"
+          class="navbar1_menu is-page-height-tablet w-nav-menu"
+        >
+          <a href="#features" class="navbar1_link tablet w-nav-link">Features</a
+          >
+          <a href="#benefits" class="navbar1_link tablet w-nav-link">Benefits</a
+          >
+          <a href="#testimonials" class="navbar1_link tablet w-nav-link"
+            >Testimonials</a
+          >
+          <div class="navbar1_menu-buttons">
+            <a href="#cta" class="button is-small w-button">Join Our Waitlist</a
+            >
+          </div>
+        </nav>
+        <div class="navbar1_menu-button w-nav-button">
+          <div class="menu-icon1">
+            <div class="menu-icon1_line-top"></div>
+            <div class="menu-icon1_line-middle">
+              <div class="menu-icon_line-middle-inner"></div>
+            </div>
+            <div class="menu-icon1_line-bottom"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <main class="main-wrapper">
+      <header class="section_home-header">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="padding-section-large">
+              <div class="header26_component">
+                <div class="margin-bottom margin-xxlarge">
+                  <div class="text-align-center">
+                    <div class="max-width-xlarge">
+                      <div class="margin-bottom margin-small">
+                        <h1>
+                          Where Financial Innovation <br />Meets Your Future
+                        </h1>
+                      </div>
+                      <p class="text-size-medium">
+                        At Nexa, we&#x27;re redefining the landscape of finance
+                        through cutting-edge technology and forward-thinking
+                        solutions. Whether you&#x27;re an individual investor, a
+                        growing startup, or an established enterprise,
+                        we&#x27;re here to empower you on your financial
+                        journey.
+                      </p>
+                      <div class="margin-top margin-medium">
+                        <div class="button-group is-center">
+                          <a href="#cta" class="button w-button"
+                            >Join Our Waitlist</a
+                          >
+                          <a
+                            href="#features"
+                            class="button is-secondary w-button"
+                            >Explore Our Features</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="header_image-container">
+                  <div class="header26_image-wrapper">
+                    <img
+                      src="images/hero-image.png"
+                      loading="eager"
+                      sizes="(max-width: 991px) 90vw, 864px"
+                      srcset="images/hero-image-p-500.png 500w, images/hero-image-p-800.png 800w, images/hero-image-p-1080.png 1080w, images/hero-image-p-1600.png 1600w, images/hero-image.png 1630w"
+                      alt="financial graphic - weekly spending, spending channels and income vs spending"
+                      class="header26_image"
+                    />
+                  </div>
+                  <div class="gradient-background"></div>
+                  <div class="gradient-background-2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <section class="section_logo">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="padding-section-medium">
+              <div class="logo1_component">
+                <img
+                  src="images/stripe.svg"
+                  loading="lazy"
+                  alt="Stripe logo"
+                  class="logo1_logo"
+                /><img
+                  src="images/afterpay.svg"
+                  loading="lazy"
+                  alt="Afterpay company logo"
+                  class="logo1_logo"
+                /><img
+                  src="images/hopin.svg"
+                  loading="lazy"
+                  alt="Hopin company logo"
+                  class="logo1_logo"
+                /><img
+                  src="images/splunk.svg"
+                  loading="lazy"
+                  alt="Splunk company logo"
+                  class="logo1_logo"
+                /><img
+                  src="images/attentive.svg"
+                  loading="lazy"
+                  alt="Attentive company logo"
+                  class="logo1_logo"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="features" class="section_home-features">
+        <div class="padding-global">
+          <div class="container-medium">
+            <div class="padding-section-medium">
+              <div class="text-align-center">
+                <div class="max-width-xlarge align-center">
+                  <div class="margin-bottom margin-small">
+                    <h2 class="heading-style-h3">
+                      Discover the Next Generation of Financial Solutions at
+                      Nexa
+                    </h2>
+                  </div>
+                  <p class="text-size-medium">
+                    Explore our cutting-edge features designed to personalize
+                    your financial journey, integrate seamlessly across
+                    platforms, and ensure the highest standards of security.
+                    Take control of your finances and unlock new possibilities
+                    with Nexa today.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container-large">
+            <div class="padding-section-small">
+              <div class="w-layout-grid layout192_component">
+                <div
+                  id="w-node-_2bf7e7c8-54d2-4da5-0b7b-0eecde73fac6-ab5f4e6f"
+                  class="home_features-item"
+                >
+                  <div
+                    id="w-node-c07bc741-f034-6b34-f87e-6faa46440891-ab5f4e6f"
+                    class="layout192_content"
+                  >
+                    <div class="margin-bottom margin-xsmall">
+                      <div class="tagline-wrapper">
+                        <div class="text-weight-semibold green-tagline">
+                          Customize
+                        </div>
+                      </div>
+                    </div>
+                    <div class="margin-bottom margin-small">
+                      <h3 class="heading-style-h5">Personalized Insights</h3>
+                    </div>
+                    <p class="text-size-medium">
+                      Gain valuable insights into your financial health with
+                      real-time data analysis and personalized recommendations.
+                      Our platform dynamically tracks your spending habits,
+                      investment performance, and savings goals to provide
+                      actionable insights that help you stay on track towards
+                      financial success.
+                    </p>
+                  </div>
+                  <div
+                    id="w-node-c07bc741-f034-6b34-f87e-6faa4644088f-ab5f4e6f"
+                    class="layout192_image-wrapper first-row"
+                  >
+                    <img
+                      src="images/spending-habits.png"
+                      loading="lazy"
+                      sizes="(max-width: 479px) 87vw, (max-width: 767px) 88vw, (max-width: 991px) 14vw, 20vw"
+                      srcset="images/spending-habits-p-500.png 500w, images/spending-habits-p-800.png 800w, images/spending-habits-p-1080.png 1080w, images/spending-habits.png 1148w"
+                      alt="Spending habits graphic feature image"
+                      class="layout192_image _1"
+                    />
+                  </div>
+                </div>
+                <div
+                  id="w-node-_74c0ad5e-1508-f66f-d763-f68c6137e6e3-ab5f4e6f"
+                  class="home_features-item"
+                >
+                  <div
+                    id="w-node-_9b504c82-a7bf-af98-8f5b-ee8a6c526519-ab5f4e6f"
+                    class="layout192_image-wrapper second-row"
+                  >
+                    <img
+                      src="images/weekly-equities.png"
+                      loading="lazy"
+                      sizes="(max-width: 479px) 83vw, (max-width: 767px) 86vw, (max-width: 991px) 15vw, 18vw"
+                      srcset="images/weekly-equities-p-500.png 500w, images/weekly-equities-p-800.png 800w, images/weekly-equities.png 948w"
+                      alt="Weekly equities graphic"
+                      class="layout192_image _2"
+                    />
+                  </div>
+                  <div
+                    id="w-node-_84f07177-5457-2804-9d46-5b0ae7e69aff-ab5f4e6f"
+                    class="layout192_content"
+                  >
+                    <div class="margin-bottom margin-xsmall">
+                      <div class="tagline-wrapper">
+                        <div class="text-weight-semibold green-tagline">
+                          Advise
+                        </div>
+                      </div>
+                    </div>
+                    <div class="margin-bottom margin-small">
+                      <h3 class="heading-style-h5">Expert Guidance</h3>
+                    </div>
+                    <p class="text-size-medium">
+                      Access expert financial guidance tailored to your unique
+                      goals and circumstances. Our team of financial advisors is
+                      here to provide personalized recommendations, answer your
+                      questions, and offer strategic advice to help you make
+                      informed decisions and optimize your financial strategy.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  id="w-node-d6110e76-898d-3cfd-134d-f1d46e7facf9-ab5f4e6f"
+                  class="home_features-item"
+                >
+                  <div
+                    id="w-node-_24b58323-08c1-88c1-a114-f7a3c82d7b92-ab5f4e6f"
+                    class="layout192_content"
+                  >
+                    <div class="margin-bottom margin-xsmall">
+                      <div class="tagline-wrapper">
+                        <div class="text-weight-semibold green-tagline">
+                          Organize
+                        </div>
+                      </div>
+                    </div>
+                    <div class="margin-bottom margin-small">
+                      <h3 class="heading-style-h5">Comprehensive Tracking</h3>
+                    </div>
+                    <p class="text-size-medium">
+                      Stay organized and informed with comprehensive financial
+                      tracking tools. Easily monitor all your accounts,
+                      transactions, and investments in one centralized
+                      dashboard, empowering you to track your progress, identify
+                      trends, and take control of your financial future with
+                      confidence.
+                    </p>
+                  </div>
+                  <div
+                    id="w-node-_10e28d98-7189-afd8-58ad-c473932d5f80-ab5f4e6f"
+                    class="layout192_image-wrapper third-row"
+                  >
+                    <img
+                      src="images/spending-channels.png"
+                      loading="lazy"
+                      sizes="(max-width: 767px) 90vw, (max-width: 991px) 12vw, 19vw"
+                      srcset="images/spending-channels-p-500.png 500w, images/spending-channels.png 784w"
+                      alt="Spending channels graphic
+	"
+                      class="layout192_image _3"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="benefits" class="section_home-benefits">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="padding-section-large">
+              <div class="margin-bottom margin-xxlarge">
+                <div class="text-align-center">
+                  <div class="max-width-xlarge align-center">
+                    <div class="margin-bottom margin-small">
+                      <h2 class="heading-style-h3">
+                        Unlock the Nexa Advantage
+                      </h2>
+                    </div>
+                    <p class="text-size-medium">
+                      Discover the exclusive benefits of partnering with Nexa
+                      for your financial needs.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="w-layout-grid layout396_component">
+                <div
+                  id="w-node-ca402f52-037f-2f86-bc0a-2df9c8eea544-ab5f4e6f"
+                  class="w-layout-grid layout396_row"
+                >
+                  <div
+                    id="w-node-ca402f52-037f-2f86-bc0a-2df9c8eea545-ab5f4e6f"
+                    class="layout396_card"
+                  >
+                    <div class="layout396_card-content">
+                      <div class="layout396_card-content-top">
+                        <div class="margin-bottom margin-xsmall">
+                          <h3 class="heading-style-h4">Effortless Budgeting</h3>
+                        </div>
+                        <p>
+                          Simplify your financial planning with intuitive
+                          budgeting tools, helping you stay on top of your
+                          spending effortlessly.
+                        </p>
+                      </div>
+                      <div class="margin-bottom margin-small">
+                        <img
+                          src="images/piggy-bank.svg"
+                          loading="lazy"
+                          alt="piggy bank icon"
+                          class="icon-1x1-medium"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    id="w-node-ca402f52-037f-2f86-bc0a-2df9c8eea555-ab5f4e6f"
+                    class="layout396_card"
+                  >
+                    <div class="layout396_card-content">
+                      <div class="layout396_card-content-top">
+                        <div class="margin-bottom margin-xsmall">
+                          <h3 class="heading-style-h4">Investment Insights</h3>
+                        </div>
+                        <p>
+                          Gain valuable market insights and personalized
+                          investment recommendations to maximize your returns
+                          and minimize risks.
+                        </p>
+                      </div>
+                      <div class="margin-bottom margin-small">
+                        <img
+                          src="images/chart.svg"
+                          loading="lazy"
+                          alt="chart icon"
+                          class="icon-1x1-medium"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    id="w-node-ca402f52-037f-2f86-bc0a-2df9c8eea565-ab5f4e6f"
+                    class="layout396_card"
+                  >
+                    <div class="layout396_card-content">
+                      <div class="layout396_card-content-top">
+                        <div class="margin-bottom margin-xsmall">
+                          <h3 class="heading-style-h4">Real-time Alerts</h3>
+                        </div>
+                        <p>
+                          Stay informed with instant notifications about
+                          important financial events, ensuring you never miss a
+                          beat.
+                        </p>
+                      </div>
+                      <div class="margin-bottom margin-small">
+                        <img
+                          src="images/bell.svg"
+                          loading="lazy"
+                          alt="Bell Icon"
+                          class="icon-1x1-medium"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="testimonials" class="section_testimonial">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="padding-section-large">
+              <div class="w-layout-grid testimonial13_component">
+                <div
+                  id="w-node-_1088cb54-a050-aaff-cfa4-7aea0b721eda-ab5f4e6f"
+                  class="testimonial13_content"
+                >
+                  <div class="margin-vertical margin-medium">
+                    <blockquote class="block-quote">
+                      “Using Nexa has been a game-changer for my financial
+                      journey. The personal insights and guidance have helped me
+                      make smarter decisions and achieve my goals faster than I
+                      ever thought possible. I highly recommend Nexa to anyone
+                      looking to take control of their finances and unlock their
+                      full potential.”
+                    </blockquote>
+                  </div>
+                  <div class="testimonial13_client">
+                    <div class="testimonial13_client-info">
+                      <p class="text-weight-semibold testimonial_name-client">
+                        - Sarah Ross
+                      </p>
+                      <p class="testimonial_sub-paragraph">
+                        Satisfied Nexa user
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="testimonial13_client-image-wrapper">
+                  <img
+                    src="images/expenses.png"
+                    loading="lazy"
+                    sizes="(max-width: 767px) 90vw, (max-width: 991px) 43vw, 42vw"
+                    srcset="images/expenses-p-500.png 500w, images/expenses-p-800.png 800w, images/expenses-p-1080.png 1080w, images/expenses.png 1284w"
+                    alt="Expenses graphic"
+                    class="testimonial13_client-image"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="cta" class="section_cta">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="padding-section-large">
+              <div class="text-align-center">
+                <div class="margin-bottom margin-small">
+                  <h2 class="heading-style-h1">
+                    Transform Your Financial <br />Future with Nexa
+                  </h2>
+                </div>
+                <p class="text-size-medium">
+                  Take the first step towards financial freedom with Nexa&#x27;s
+                  innovative tools and personalized <br />guidance. Join us now
+                  and unlock the potential to achieve your financial goals like
+                  never before.
+                </p>
+              </div>
+              <div class="margin-top margin-medium">
+                <div class="max-width-custom align-center">
+                  <div class="cta26_form-block w-form">
+                    <form
+                      id="email-form"
+                      name="email-form"
+                      data-name="Email Form"
+                      method="get"
+                      class="cta26_form"
+                      data-wf-page-id="661bb59c7fb20842ab5f4e6f"
+                      data-wf-element-id="b123d093-dc49-1720-fad5-6e3816124388"
+                    >
+                      <div class="signup-form-wrapper">
+                        <input
+                          class="form_input w-input"
+                          maxlength="256"
+                          name="email-2"
+                          data-name="Email 2"
+                          placeholder="email@example.com"
+                          type="email"
+                          id="email-2"
+                          required=""
+                        /><input
+                          type="submit"
+                          data-wait="Please wait..."
+                          class="button is-small signup-button-desktop w-button"
+                          value="Join our waitlist"
+                        />
+                        <div
+                          id="w-node-_62437fa3-1d0d-b141-f7ed-32d213ae0b48-ab5f4e6f"
+                          class="button-group"
+                        >
+                          <div class="button is-icon-only">
+                            <div class="icon-embed-xsmall w-embed">
+                              <svg
+                                width="12"
+                                height="13"
+                                viewBox="0 0 12 13"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path
+                                  d="M11 1.31836L1 11.3184M11 1.31836H2M11 1.31836V10.3184"
+                                  stroke="white"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"></path>
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                    <div class="success-message w-form-done">
+                      <div class="success-text">
+                        Thank you! Your submission has been received!
+                      </div>
+                    </div>
+                    <div class="error-message w-form-fail">
+                      <div class="error-text">
+                        Oops! Something went wrong while submitting the form.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer3_component">
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="padding-vertical padding-xxlarge">
+            <div class="padding-bottom padding-xxlarge">
+              <div class="w-layout-grid footer3_top-wrapper">
+                <div class="footer3_left-wrapper">
+                  <div class="margin-bottom margin-medium">
+                    <div class="footer3_details-wrapper">
+                      <div class="margin-bottom margin-tiny">
+                        <h2>
+                          <span class="text-color-white"
+                            >Empowering Your Financial Journey</span
+                          >
+                        </h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="margin-bottom margin-medium">
+              <a href="#" class="footer3_logo-link w-nav-brand"
+                ><img src="images/logo-white.svg" loading="lazy" alt="" /></a
+              >
+            </div>
+            <div class="line-divider"></div>
+            <div class="padding-top padding-medium">
+              <div class="footer3_bottom-wrapper">
+                <div class="footer3_credit-text">© Nexa by ExpertFlow</div>
+                <div class="w-layout-grid footer3_legal-list">
+                  <a href="#features" class="footer3_legal-link">Features</a>
+                  <a href="#benefits" class="footer3_legal-link">Benefits</a>
+                  <a href="#testimonials" class="footer3_legal-link"
+                    >Testimonials</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
 </Layout>

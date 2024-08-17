@@ -61,7 +61,7 @@ const { title } = Astro.props;
     </script>
     <link href="/public/images/favicon.png" rel="shortcut icon" type="image/x-icon" />
     <link
-      href="images/webclip.png"
+      href="/public/images/webclip.png"
       rel="apple-touch-icon"
     /><!--  Keep this css code to improve the font quality -->
     <meta name="description" content="Astro description" />
@@ -69,6 +69,13 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <style is:global>
+      * {
+       -webkit-font-smoothing: antialiased;
+       -moz-osx-font-smoothing: grayscale;
+       -o-font-smoothing: antialiased;
+     }
+     </style>
   </head>
   <body>
     <slot />
@@ -77,10 +84,4 @@ const { title } = Astro.props;
 	<script defer="" src="https://cdn.jsdelivr.net/npm/@finsweet/attributes-scrolldisable@1/scrolldisable.js"></script>
   </body>
 </html>
-<style is:global>
- * {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -o-font-smoothing: antialiased;
-}
-</style>
+
